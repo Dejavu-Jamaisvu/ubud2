@@ -60,7 +60,7 @@ prefix="_backup_"
 # 각 원본 파일을 반복합니다
 for file in "${files[@]}"; do
   # 각 원본 파일에 대해 가장 오래된 백업 파일 찾기
-  oldest_backup=$(ls -t "$file$prefix"_* | tail -1)
+  oldest_backup=$(ls -t "$file$prefix"* | tail -1)
 
   #각 원본 파일에 대해 가장 오래된 백업 파일이 있는지 확인
   if [ -f "$oldest_backup" ]; then
