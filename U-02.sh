@@ -26,7 +26,7 @@ EOF
 BAR
 
 # 백업할 원본 파일 배열 설정
-files=("/etc/login.defs" "etc/pam.d/common-auth")
+files=("/etc/login.defs" "/etc/pam.d/common-auth")
 
 # 백업 디렉터리 설정
 backup_dir="/backup"
@@ -49,7 +49,7 @@ done
 # --------------------------------------------------------------------------------------
 
 # 원본 파일 배열 설정
-files=("/etc/login.defs" "etc/pam.d/common-auth")
+files=("/etc/login.defs" "/etc/pam.d/common-auth")
 
 # 백업 디렉터리 설정
 backup_dir="/backup"
