@@ -32,7 +32,7 @@ current_time=$(date +%Y%m%d_%H%M%S)
 # 각 원본 파일을 반복합니다
 for file in "${files[@]}"; do
   # create a new backup file using the current time in the file name
-  cp "$file" "$file$prefix$current_time"
+  cp -p "$file" "$file$prefix$current_time"
   # 백업이 성공적으로 생성되었음을 나타내는 메시지 표시
   echo "Successfully created backup file: $file$prefix$current_time"
   OK "시스템이 성공적으로 백업되었습니다.: $file$prefix$current_time"
@@ -60,7 +60,7 @@ for file in "${files[@]}"; do
   #각 원본 파일에 대해 가장 오래된 백업 파일이 있는지 확인
   if [ -f "$oldest_backup" ]; then
     # 가장 오래된 백업 파일을 원래 파일로 복원
-    cp "$oldest_backup" "$file"
+    cp -p "$oldest_backup" "$file"
     # 복원이 성공했음을 나타내는 메시지를 표시
     echo "Successfully restored the oldest backup file: $oldest_backup to $file"
     OK "시스템이 성공적으로 원래 상태로 복원되었습니다.: $oldest_backup to $file"
