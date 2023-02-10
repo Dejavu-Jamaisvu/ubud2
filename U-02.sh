@@ -25,6 +25,7 @@ EOF
 
 BAR
 
+
 # 백업할 원본 파일 배열 설정
 files=("/etc/login.defs" "/etc/pam.d/common-auth")
 
@@ -49,6 +50,7 @@ done
 
 
 # --------------------------------------------------------------------------------------
+
 
 # 원본 파일 배열 설정
 files=("/etc/login.defs" "/etc/pam.d/common-auth")
@@ -77,6 +79,7 @@ for file in "${files[@]}"; do
     WARN "백업 파일을 찾을 수 없습니다. 시스템을 복원할 수 없습니다.: $oldest_backup"
   fi
 done
+
 
 cat $result
 
