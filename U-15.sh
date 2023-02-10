@@ -20,21 +20,17 @@ TMP1=`SCRIPTNAME`.log
 
 >$TMP1  
 
-critical_dir="/path/to/system/critical/directory"
 
-for file in "$critical_dir"/*; do
-  if [ ! -f "$file" ]; then
-    continue
-  fi
-  
-  permission=$(stat -c '%a' "$file")
-  if [ "$((permission & 2))" -eq 2 ]; then
-    chmod o-w "$file"
-    if [ "$((permission & 6))" -eq 6 ]; then
-      rm -rf "$file"
-    fi
-  fi
-done
+# Create a backup directory
+mkdir -p /backup_777_files
+
+# Copy all files with permission 777 to the backup directory
+find / -type f -perm 777 -exec cp {} /backup_777_files/ \;
+
+# ---------------------------------------------------------------------
+
+# Restore the original state of the files
+find /backup_777_files/ -type f -exec cp {} / \;
 
 
 cat $result

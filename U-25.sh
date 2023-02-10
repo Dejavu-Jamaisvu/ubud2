@@ -18,24 +18,29 @@ EOF
 
 BAR
 
-# Start the NFS service
+
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#----------------------------------------------------------------------
+
+
+# NFS 서비스 시작
 sudo service nfs start
 
-# Check the status of the NFS service
+# NFS 서비스의 상태를 확인합니다
 sudo service nfs status
 
 sudo mount 192.168.0.100:/nfs_share /mnt/nfs
 
-# Check if the NFS share is mounted correctly by accessing it
+# NFS 공유에 액세스하여 NFS 공유가 올바르게 마운트되었는지 확인
 ls /mnt/nfs
 
-# If there's an issue, print an error message and exit
+# 문제가 있는 경우 오류 메시지를 인쇄하고 종료
 if [ $? -ne 0 ]; then
-  echo "Error: NFS service could not be restored to its original state"
+  echo "오류: NFS 서비스를 원래 상태로 복원할 수 없습니다."
 fi
 
-echo "NFS service has been successfully restored to its original state"
-
+echo "NFS 서비스가 성공적으로 원래 상태로 복원되었습니다."
 
 
 cat $result
