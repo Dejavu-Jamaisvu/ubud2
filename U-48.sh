@@ -78,6 +78,7 @@ for file in "${files[@]}"; do
     WARN "백업 파일을 찾을 수 없습니다. 시스템을 복원할 수 없습니다.: $oldest_backup"
   fi
 done
+
 cat $result
 
 echo ; echo
