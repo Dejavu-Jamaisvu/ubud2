@@ -18,6 +18,10 @@ EOF
 
 BAR
 
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#---------------------------------------------------
+
 # Sendmail 서비스 재시작
 sudo service sendmail restart
 

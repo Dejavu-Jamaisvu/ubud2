@@ -16,6 +16,10 @@ EOF
 
 BAR
 
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#---------------------------------------------------
+
 sudo service ypserv start
 sudo update-rc.d ypserv enable
 

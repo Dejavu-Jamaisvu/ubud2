@@ -20,6 +20,14 @@ TMP1=`SCRIPTNAME`.log
 
 >$TMP1  
 
+
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#---------------------------------------------------
+
+INFO "이 부분은 복구와 관련된 항목이 아닙니다"
+
+#####################################################
 # Get the latest backup of the sulog file
 sulog_backup=$(ls -t /var/log/sulog_* | head -n 1)
 
