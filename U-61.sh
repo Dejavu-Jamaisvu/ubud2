@@ -24,6 +24,9 @@ TMP1=`SCRIPTNAME`.log
 
 > $TMP1   
 
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#---------------------------------------------------
 # Start the vsftpd service
 sudo service vsftpd start
 

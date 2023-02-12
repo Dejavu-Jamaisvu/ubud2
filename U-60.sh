@@ -25,28 +25,20 @@ BAR
 TMP1=`SCRIPTNAME`.log
 
 > $TMP1  
+#etc/telnet
+#/etc/ftp
+#/etc/ssh
 
-# Restore Telnet configuration, if backed up
-if [ -d /etc/telnet.bak ]; then
-    sudo rm -rf /etc/telnet
-    sudo mv /etc/telnet.bak /etc/telnet
-    sudo apt-get install telnet -y
-fi
 
-# Restore FTP configuration, if backed up
-if [ -d /etc/ftp.bak ]; then
-    sudo rm -rf /etc/ftp
-    sudo mv /etc/ftp.bak /etc/ftp
-    sudo apt-get install ftp -y
-fi
+
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#---------------------------------------------------
+
 
 # Stop ssh service
 sudo service ssh stop
 
-# Restore ssh configuration
-sudo rm -rf /etc/ssh
-sudo mv /etc/ssh.bak /etc/ssh
-sudo apt-get install openssh-server -y
 
 cat $result
 
