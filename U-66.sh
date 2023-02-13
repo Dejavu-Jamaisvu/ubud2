@@ -20,11 +20,15 @@ EOF
 BAR
 
 
-# Restore the snmpd configuration file
-sudo cp /etc/snmp/snmpd.conf.bak /etc/snmp/snmpd.conf
+
+INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+
+#---------------------------------------------------
 
 # Start the snmpd service
 sudo service snmpd start
+
+INFO "SNMP 서비스를 시작하였습니다."
 
 cat $result
 

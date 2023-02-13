@@ -25,7 +25,7 @@ BAR
 TMP1=`SCRIPTNAME`.log
 
 > $TMP1  
-#etc/telnet
+#/etc/telnet
 #/etc/ftp
 #/etc/ssh
 
