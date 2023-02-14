@@ -22,51 +22,35 @@ TMP1=`SCRIPTNAME`.log
 
 HTTPD_ROOT="/etc/apache2/apache2.conf"
 UNWANTED_ITEMS="manual samples docs"
+BACKUP_DIR="/root/httpd_backup"
 
+# 원하지 않는 파일 백업
+mkdir -p "$BACKUP_DIR"
 for item in $UNWANTED_ITEMS
 do
-if [ ! -d "$HTTPD_ROOT/$item" ] && [ ! -f "$HTTPD_ROOT/$item" ]; then
-    sudo cp -r "$HTTPD_ROOT/backup/$item" "$HTTPD_ROOT/$item"
-    OK "$item 이 $HTTPD_ROOT 로 복원되었습니다."
-else
-    WARN "$item 이 $HTTPD_ROOT 로 복원 안 되었습니다."
-fi
+  if [ -d "$HTTPD_ROOT/$item" ] || [ -f "$HTTPD_ROOT/$item" ]; then
+    cp -r "$HTTPD_ROOT/$item" "$BACKUP_DIR"
+    INFO "$item이 $HTTPD_ROOT에서 $BACKUP_DIR로 백업되었습니다"
+  fi
 done
-#########################################################################
+
+#------------------------------------------------------------------
+
 HTTPD_ROOT="/etc/apache2/apache2.conf"
 UNWANTED_ITEMS="manual samples docs"
-BACKUP_DIR="/tmp/httpd_backup"
+BACKUP_DIR="/root/httpd_backup"
 
-if [ `ps aux | grep apache2 | grep -v "grep" | wc -l` -eq 0 ]; then
-  echo "Apache not executed."
-else
-  if [ ! -d "$BACKUP_DIR" ]; then
-    echo "Creating backup directory $BACKUP_DIR"
-    mkdir "$BACKUP_DIR"
-  fi
-
+# 백업 파일 복원
+if [ -d "$BACKUP_DIR" ]; then
   for item in $UNWANTED_ITEMS
   do
-    if [ -d "$HTTPD_ROOT/$item" ] || [ -f "$HTTPD_ROOT/$item" ]; then
-      echo "Backing up $item from $HTTPD_ROOT to $BACKUP_DIR"
-      cp -r "$HTTPD_ROOT/$item" "$BACKUP_DIR/$item"
-    else
-      echo "$item not found in $HTTPD_ROOT"
+    if [ -d "$BACKUP_DIR/$item" ] || [ -f "$BACKUP_DIR/$item" ]; then
+      cp -r "$BACKUP_DIR/$item" "$HTTPD_ROOT"
+      INFO "$item이 $BACKUP_DIR에서 $HTTPD_ROOT로 복원되었습니다."
     fi
   done
-#---------------------------------------------------------------------
-
-
-for item in $UNWANTED_ITEMS
-do
-    if [ -d "$BACKUP_DIR/$item" ] || [ -f "$BACKUP_DIR/$item" ]; then
-    echo "Recovering $item from $BACKUP_DIR to $HTTPD_ROOT"
-    cp -r "$BACKUP_DIR/$item" "$HTTPD_ROOT/$item"
-    else
-    echo "$item not found in $BACKUP_DIR"
-    fi
-done
+else
+  WARN "백업 디렉터리 $BACKUP_DIR이 없습니다."
 fi
-cat $result
 
 echo ; echo

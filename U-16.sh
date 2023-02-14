@@ -40,7 +40,7 @@ done
 
 # INFO "primary / minor numbers 가 없는 장치 파일을 백업하였습니다."
 
-INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
+INFO "/root/device_files_backup/에 백업된 파일을 확인하시기 바랍니다."
 
 #---------------------------------------------------
 
@@ -51,7 +51,7 @@ find /root/device_files_backup -type f -exec cp -p {} /dev/ \;
 
 # INFO "백업된 장치 파일을 복원하였습니다."
  
-INFO "이 부분은 복구와 관련된 항목이 아닙니다"
+INFO "/root/device_files_backup/으로부터 복구한 파일을 확인하시기 바랍니다."
 
 cat $result
 
