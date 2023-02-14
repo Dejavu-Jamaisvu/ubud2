@@ -27,24 +27,6 @@ INFO "이 부분은 백업 파일 관련한 항목이 아닙니다"
 
 INFO "이 부분은 복구와 관련된 항목이 아닙니다"
 
-#####################################################
-# Get the latest backup of the sulog file
-sulog_backup=$(ls -t /var/log/sulog_* | head -n 1)
-
-# Recover the sulog file from its backup
-cp $sulog_backup /var/log/sulog
-
-# Get the latest backup of the auth.log file
-auth_backup=$(ls -t /var/log/auth_* | head -n 1)
-
-# Recover the auth.log file from its backup
-cp $auth_backup /var/log/auth.log
-
-# Get the latest backup of the auth_logs file
-auth_logs_backup=$(ls -t /var/log/auth_logs_* | head -n 1)
-
-# Recover the auth_logs file from its backup
-cp $auth_logs_backup /var/log/auth_logs
 
 cat $result
 

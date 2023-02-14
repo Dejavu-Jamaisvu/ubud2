@@ -27,11 +27,6 @@ TMP1=`SCRIPTNAME`.log
 
 > $TMP1 
 
-sudo cp /etc/motd.bak /etc/motd
-sudo cp /etc/issue.net.bak /etc/issue.net
-sudo cp /etc/vsftpd/vsftpd.conf.bak /etc/vsftpd/vsftpd.conf
-sudo cp /etc/mail/sendmail.cf.bak /etc/mail/sendmail.cf
-sudo cp /etc/named.conf.bak /etc/named.conf
 
 
 # 원본 파일 배열 설정
